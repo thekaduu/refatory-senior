@@ -1,0 +1,35 @@
+version: '2'
+
+volumes:
+    logs:
+        driver: local
+
+services:
+    database:
+        container_name: database
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: a1a2a3a4
+            POSTGRES_DB: avaliacao
+        ports:
+            - 5454:5432
+
+    slim:
+        container_name: slim-app
+        image: carloseduardolbraz/php-7-composer
+        working_dir: /var/www
+        command: php -S 0.0.0.0:8080 -t public
+
+        environment:
+            docker: "true"
+            DBHOST: 172.25.0.1
+            DBUSER: postgres
+            DBPASS: a1a2a3a4
+            DBNAME: avaliacao
+        ports:
+            - 8080:8080
+        volumes:
+            - .:/var/www
+            - logs:/var/www/logs
+        depends_on:
+            - database
