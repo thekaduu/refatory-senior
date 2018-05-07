@@ -5,12 +5,12 @@ use Slim\Http\Response;
 use App\Controller\StudentController;
 
 // Routes
-$app->group('/students', function() {
+$app->get('/', StudentController::class. ':index');
+$app->group('/students', function () {
     $this->get('', StudentController::class. ':index');
-
-    $this->get('/create', StudentController::class . '::create');
-    $this->post('/create', StudentController::class . '::store');
-    $this->get('/edit/{id}', StudentController::class . '::edit');
-    $this->post('/edit/{id}', StudentController::class . '::update');
-    $this->get('/delete/{id}', StudentController::class . '::delete');
+    $this->get('/create', StudentController::class . ':create');
+    $this->post('/create', StudentController::class . ':store');
+    $this->get('/edit/{id}', StudentController::class . ':edit');
+    $this->post('/edit/{id}', StudentController::class . ':update');
+    $this->get('/delete/{id}', StudentController::class . ':delete');
 });

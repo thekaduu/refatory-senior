@@ -23,25 +23,31 @@
             <a href="/" class="btn btn-primary">Lista</a>
             <h1>Criar Aluno</h1>
             <form method="post">
-                <div class="form-group">
+
+                <div class="form-group <?php echo isset($erros['name']) ? 'has-error': '' ?>" />
                     <label for="name">Nome</label>
-                    <input type="text" name="name" class="form-control" placeholder="Nome">
+                    <input type="text" maxlength="50" name="name" value="<?= @$oldInput['name']; ?>" class="form-control" placeholder="Nome">
+                    <spam class="text-danger"><?php echo @$erros["name"] ?></spam>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?php echo isset($erros['cpf']) ? 'has-error': '' ?>">
                     <label for="cpf">CPF</label>
-                    <input type="text" name="cpf" class="form-control" placeholder="CPF">
+                    <input type="text" name="cpf"  maxlength="11" value="<?= @$oldInput['cpf']; ?>" class="form-control" placeholder="Digite apenas números">
+                    <spam class="text-danger"><?php echo @$erros["cpf"] ?></spam>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?php echo isset($erros['rg']) ? 'has-error': '' ?>">
                     <label for="rg">RG</label>
-                    <input type="text" name="rg" class="form-control" placeholder="RG">
+                    <input type="text" name="rg" maxlength="14"  value="<?= @$oldInput['rg']; ?>" class="form-control" placeholder="RG">
+                    <spam class="text-danger"><?php echo @$erros["rg"] ?></spam>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?php echo isset($erros['phone']) ? 'has-error': '' ?>">
                     <label for="phone">Telefone</label>
-                    <input type="text" name="phone" class="form-control" placeholder="Telefone">
+                    <input type="tel" name="phone" maxlength="13"  value="<?= @$oldInput['phone']; ?>" class="form-control" placeholder="Digite apenas números">
+                    <spam class="text-danger"><?php echo @$erros["phone"] ?></spam>
                 </div>
-                <div class="form-group">
+                <div class="form-group <?php echo isset($erros['birthday']) ? 'has-error': '' ?>">
                     <label for="birthday">Data de nascimento</label>
-                    <input type="text" name="birthday" class="form-control" placeholder="Data de nascimento">
+                    <input type="text" maxlength="10" name="birthday"  value="<?= @$oldInput['birthday']; ?>" class="form-control" placeholder="Ex.: 06/05/2018">
+                    <spam class="text-danger"><?php echo @$erros["birthday"] ?></spam>
                 </div>
                 <button type="submit" class="btn btn-default">Cadastrar</button>
             </form>

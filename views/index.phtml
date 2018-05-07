@@ -38,10 +38,10 @@
                 <?php foreach($students as $student){ ?>
                 <tr>
                     <td><?php echo $student->name ?></td>
-                    <td><?php echo $student->cpf ?></td>
+                    <td><?php echo $student->cpf_masked ?></td>
                     <td><?php echo $student->rg ?></td>
-                    <td><?php echo $student->phonne ?></td>
-                    <td><?php echo $student->birthday ?></td>
+                    <td><?php echo $student->phone_masked ?></td>
+                    <td><?php echo $student->birthday_masked ?></td>
                     <td><a href="/students/edit/<?php echo $student->id ?>" class="btn btn-primary">Edit</a></td>
                     <td><a href="/students/delete/<?php echo $student->id ?>" class="btn btn-primary">Delete</a></td>
                 </tr>

@@ -15,5 +15,21 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        //databases
+        'database' => [
+            'default' => [
+                'driver'    => 'pgsql',
+                'host'      => getenv('DBHOST'),
+                'database'  => getenv('DBNAME'),
+                'username'  => getenv('DBUSER'),
+                'password'  => getenv('DBPASS'),
+                'charset'   => 'utf8',
+                'port'      => 5454 ,
+                'collation' => 'utf8_unicode_ci',
+                'prefix'    => '',
+            ]
+        ]
+
     ],
 ];
